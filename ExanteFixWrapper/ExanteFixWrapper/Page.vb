@@ -99,15 +99,6 @@ Public Class Page
         Me.bufferTrades1800sec = New Buffer(1800000, False)
         Me.bufferTrades3600sec = New Buffer(3600000, False)
         AddHandler Me.bufferTrades.BufferClearing, AddressOf Add5SecondsPoint
-        AddHandler Me.bufferTrades10sec.BufferClearing, AddressOf Add10SecondsPoint
-        AddHandler Me.bufferTrades15sec.BufferClearing, AddressOf Add15SecondsPoint
-        AddHandler Me.bufferTrades30sec.BufferClearing, AddressOf Add30SecondsPoint
-        AddHandler Me.bufferTrades60sec.BufferClearing, AddressOf Add60SecondsPoint
-        AddHandler Me.bufferTrades300sec.BufferClearing, AddressOf Add300SecondsPoint
-        AddHandler Me.bufferTrades600sec.BufferClearing, AddressOf Add600SecondsPoint
-        AddHandler Me.bufferTrades900sec.BufferClearing, AddressOf Add900SecondsPoint
-        AddHandler Me.bufferTrades1800sec.BufferClearing, AddressOf Add1800SecondsPoint
-        AddHandler Me.bufferTrades3600sec.BufferClearing, AddressOf Add3600SecondsPoint
         Me.Chart = Chart
         Me.VolumesTradesPctBox = VolumesTradesPctBox
         Me.VolumesVolumesTradesPctBox = VolumesVolumesTradesPctBox
@@ -718,33 +709,7 @@ Public Class Page
                                    End Sub)
         End If
     End Sub
-    Public Sub Add10SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("10 sec " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add15SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("15 sec " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add30SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("30 sec " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add60SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("1 min " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add300SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("5 min " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add600SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("10 min sec " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add900SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("15 min " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add1800SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("30 min " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
-    Public Sub Add3600SecondsPoint(sender As Object, e As EventArgs)
-        'Console.WriteLine("1 hour " + CType(sender, Buffer).endTimeFrame.ToString + " " + CType(sender, Buffer).highPrice.ToString + " " + CType(sender, Buffer).openPrice.ToString + " " + CType(sender, Buffer).closePrice.ToString + " " + CType(sender, Buffer).lowPrice.ToString + " " + (CType(sender, Buffer).volumeBuy + CType(sender, Buffer).volumeSell).ToString)
-    End Sub
+
 End Class
 'Класс накапливающий данные для определенного временного промежутка
 Public Class Buffer

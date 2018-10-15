@@ -1,4 +1,6 @@
 ﻿Public Class PaintingTools
+    ' данный класс содержит инструменты рисования
+    ' экземпляр данного класса создается при инициализации экземпляра класса ChartPainting
     Public btmTrades As Bitmap
     Public btmTimes As Bitmap
     Public btmPrices As Bitmap
