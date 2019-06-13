@@ -254,45 +254,42 @@ Public Class Form1
     End Sub
 
     Private Sub QuotesPctBox_MouseMove(sender As Object, e As MouseEventArgs) Handles QuotesPctBox0.MouseMove
+        If (pageList.Count = 0 Or Not pageList(Tabs.SelectedIndex).cp.isSubscribed) Then
+            Exit Sub
+        End If
         pageList(Tabs.SelectedIndex).cp.pointMouseMoveQuotes.X = e.X
         pageList(Tabs.SelectedIndex).cp.pointMouseMoveQuotes.Y = e.Y
-        If (pageList.Count > 0) Then
-            If (pageList(Tabs.SelectedIndex).cp.isSubscribed) Then
-                Try
-                    If (pageList(Tabs.SelectedIndex).cp.needRePaintingQuotes = False) Then
-                        pageList(Tabs.SelectedIndex).cp.paintingQuotes(pageList(Tabs.SelectedIndex).QuotesPctBox, pageList(Tabs.SelectedIndex).TimesQuotesPctBox, pageList(Tabs.SelectedIndex).PricesQuotesPctBox)
-                    Else
-                        pageList(Tabs.SelectedIndex).cp.needRePaintingQuotes = False
-                        pageList(Tabs.SelectedIndex).cp.paintingQuotes(pageList(Tabs.SelectedIndex).QuotesPctBox, pageList(Tabs.SelectedIndex).TimesQuotesPctBox, pageList(Tabs.SelectedIndex).PricesQuotesPctBox)
-                        pageList(Tabs.SelectedIndex).cp.needRePaintingQuotes = True
-                    End If
-                    Dim proportion As Double = pageList(Tabs.SelectedIndex).cp.yRangeQuotes - (e.Y / pageList(Tabs.SelectedIndex).QuotesPctBox.Height) * pageList(Tabs.SelectedIndex).cp.yRangeQuotes
-                    pageList(Tabs.SelectedIndex).cp.currentQuotesPriceMM = Format((pageList(Tabs.SelectedIndex).cp.lowBorderQuotes) + proportion, "0.00")
-                    Dim indexOfPoint = CInt(Math.Floor(e.X / pageList(Tabs.SelectedIndex).cp.intervalQuotes))
-                    If (indexOfPoint < 0) Then
-                        indexOfPoint = 0
-                    End If
-                    If (indexOfPoint >= pageList(Tabs.SelectedIndex).cp.pointsQuotes.Count) Then
-                        indexOfPoint = pageList(Tabs.SelectedIndex).cp.pointsQuotes.Count - 1
-                    End If
-                    If (pageList(Tabs.SelectedIndex).cp.isClickedQuotes) Then
-                        If (e.X - pageList(Tabs.SelectedIndex).cp.positionOfClickQuotes.X > 50) Then
-                            LeftQuotesButton_Click(sender, e)
-                            pageList(Tabs.SelectedIndex).cp.positionOfClickQuotes = New PointF(e.X, e.Y)
-                        End If
-                    End If
 
-                    If (pageList(Tabs.SelectedIndex).cp.isClickedQuotes) Then
-                        If (e.X - pageList(Tabs.SelectedIndex).cp.positionOfClickQuotes.X < -50) Then
-                            RightQuotesButton_Click(sender, e)
-                            pageList(Tabs.SelectedIndex).cp.positionOfClickQuotes = New PointF(e.X, e.Y)
-                        End If
-                    End If
-                Catch ex As Exception
-
-                End Try
+        Dim index = Tabs.SelectedIndex
+        If (pageList(index).cp.needRePaintingQuotes = False) Then
+            pageList(index).cp.paintingQuotes(pageList(index).QuotesPctBox, pageList(index).TimesQuotesPctBox, pageList(index).PricesQuotesPctBox)
+        Else
+            pageList(index).cp.needRePaintingQuotes = False
+            pageList(index).cp.paintingQuotes(pageList(index).QuotesPctBox, pageList(index).TimesQuotesPctBox, pageList(index).PricesQuotesPctBox)
+            pageList(index).cp.needRePaintingQuotes = True
+        End If
+        Dim proportion As Double = pageList(index).cp.yRangeQuotes - (e.Y / pageList(index).QuotesPctBox.Height) * pageList(index).cp.yRangeQuotes
+        pageList(index).cp.currentQuotesPriceMM = Format((pageList(index).cp.lowBorderQuotes) + proportion, "0.00")
+        Dim indexOfPoint = CInt(Math.Floor(e.X / pageList(index).cp.intervalQuotes))
+        If (indexOfPoint < 0) Then
+            indexOfPoint = 0
+        End If
+        If (indexOfPoint >= pageList(index).cp.pointsQuotes.Count) Then
+            indexOfPoint = pageList(index).cp.pointsQuotes.Count - 1
+        End If
+        If (pageList(index).cp.isClickedQuotes) Then
+            If (e.X - pageList(index).cp.positionOfClickQuotes.X > 50) Then
+                LeftQuotesButton_Click(sender, e)
+                pageList(index).cp.positionOfClickQuotes = New PointF(e.X, e.Y)
             End If
         End If
+        If (pageList(index).cp.isClickedQuotes) Then
+            If (e.X - pageList(index).cp.positionOfClickQuotes.X < -50) Then
+                RightQuotesButton_Click(sender, e)
+                pageList(index).cp.positionOfClickQuotes = New PointF(e.X, e.Y)
+            End If
+        End If
+
     End Sub
 
     Private Sub DrawLine_Click(sender As Object, e As EventArgs) Handles DrawLine0.Click

@@ -47,6 +47,8 @@ Public Class Page
     Private counter3600sec As Integer
     Public gettingHistory As Boolean = False
 
+    Private stopWatch As Stopwatch
+
     Public Sub New(cp As ChartPainting,
                    QuotesPctBox As PictureBox,
                    PricesQuotesPctBox As PictureBox,
@@ -111,6 +113,7 @@ Public Class Page
         Me.counter900sec = 0
         Me.counter1800sec = 0
         Me.counter3600sec = 0
+        Me.stopWatch = New Stopwatch
     End Sub
 
     Public Sub OnMarketDataUpdate(quotesInfo As QuotesInfo)
@@ -232,7 +235,6 @@ Public Class Page
                                                    Me.cp.pointsTrades1800sec(cp.pointsTrades1800sec.Count - 1) = point
                                                    point = New PointTradesNsec(bufferTrades3600sec)
                                                    Me.cp.pointsTrades3600sec(cp.pointsTrades3600sec.Count - 1) = point
-                                                   'ReCalculateMovingAverage()
                                                    ReCalculateLastValueMovingAvg()
 
                                                    Select Case ticksOrSeconds.SelectedItem
@@ -257,6 +259,7 @@ Public Class Page
                                                        Case "1 час"
                                                            DrawEveryTick(3600)
                                                    End Select
+
                                                    For Each form In listOfClonedForms
                                                        If Not form.IsDisposed Then
                                                            point = New PointTradesNsec(bufferTrades)
@@ -309,6 +312,7 @@ Public Class Page
                                        End Sub)
             End If
         End If
+
     End Sub
 
     Private Sub DrawEveryTick(N As Integer)
@@ -502,17 +506,12 @@ Public Class Page
                                                    If Not form.IsDisposed Then
                                                        Dim newClonedPoint As New PointTradesNsec()
                                                        newClonedPoint.time = point.time.AddSeconds(counterNsec * 5)
-                                                       Dim _cnt = cp.dictionaryPointsTradesNsec(key).Count
-                                                       Try
-                                                           form.cp.dictionaryPointsTradesNsec(key)(cnt - 1) = pointCloned
-                                                       Catch ex As Exception
-                                                           If form.cp.dictionaryPointsTradesNsec(key).Count = 0 Then
-                                                               'form.cp.dictionaryPointsTradesNsec(key)(0) = pointCloned
-                                                           Else
-                                                               form.cp.dictionaryPointsTradesNsec(key)(form.cp.dictionaryPointsTradesNsec(key).Count - 1) = pointCloned
-                                                           End If
-
-                                                       End Try
+                                                       Dim _cnt = form.cp.dictionaryPointsTradesNsec(key).Count
+                                                       If form.cp.dictionaryPointsTradesNsec(key).Count = 0 Then
+                                                           'form.cp.dictionaryPointsTradesNsec(key)(0) = pointCloned
+                                                       Else
+                                                           form.cp.dictionaryPointsTradesNsec(key)(_cnt - 1) = pointCloned
+                                                       End If
 
                                                        form.ReCalculateLastValueMovingAvg()
                                                        SetPricesInNewPoint(newClonedPoint, pointCloned)
@@ -535,6 +534,7 @@ Public Class Page
             End If
 
         End If
+
     End Sub
     Public Sub ReCalculateLastValueMovingAvg()
         ReCalculateLastValueMovingAvgList(Me.cp.pointsTrades5sec)

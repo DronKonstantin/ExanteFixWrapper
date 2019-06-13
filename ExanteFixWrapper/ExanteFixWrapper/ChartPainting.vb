@@ -666,8 +666,6 @@ Public Class ChartPainting
                 pointsTradesNsec = Me.pointsTrades5sec
         End Select
 
-
-
         If (Not Form1.isOnline) Then
             needRePaintingTradesNsec = False
         End If
@@ -688,7 +686,11 @@ Public Class ChartPainting
             If currentPointTradesNsec > numberToCompare Then
                 currentPointTradesNsec = numberToCompare
             End If
-            lastPointTradesNsec = pointsTradesNsec.Count - 1
+            'lastPointTradesNsec = pointsTradesNsec.Count - 1
+            lastPointTradesNsec = currentPointTradesNsec + pointsOnScreenTradesNsec
+            If lastPointTradesNsec >= pointsTradesNsec.Count Then
+                lastPointTradesNsec = pointsTradesNsec.Count - 1
+            End If
         Else
             currentPointTradesNsec = 0
             lastPointTradesNsec = pointsTradesNsec.Count - 1
@@ -697,35 +699,22 @@ Public Class ChartPainting
 
         intervalTradesNsec = TradesPctBox.Width / pointsOnScreenTradesNsec
 
-        'Dim G_Trades As Graphics = TradesPctBox.CreateGraphics
-        'G_Trades.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-        'Dim btmTrades As New Bitmap(TradesPctBox.Width, TradesPctBox.Height)
         Dim G_btmTrades = Graphics.FromImage(pt.btmTrades) ' !!!
         G_btmTrades.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        'Dim G_Times = TimesTradesPctBox.CreateGraphics
-        'G_Times.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-        'Dim btmTimes As New Bitmap(TimesTradesPctBox.Width, TimesTradesPctBox.Height)
         Dim G_btmTimes = Graphics.FromImage(pt.btmTimes) '!!!
         G_btmTimes.TextRenderingHint = Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
         G_btmTimes.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        'Dim G_Prices As Graphics = PricesTradesPctBox.CreateGraphics
-        'G_Prices.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-        'Dim btmPrices As New Bitmap(PricesTradesPctBox.Width, PricesTradesPctBox.Height)
         Dim G_btmPrices = Graphics.FromImage(pt.btmPrices) '!!!
         G_btmPrices.TextRenderingHint = Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
         G_btmPrices.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        'Dim G_Volumes As Graphics = VolumesTradesPctBox.CreateGraphics
-        'G_Volumes.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-        'Dim btmVolumes As New Bitmap(VolumesTradesPctBox.Width, VolumesTradesPctBox.Height)
         Dim G_btmVolumes = Graphics.FromImage(pt.btmVolumes)
         G_btmVolumes.TextRenderingHint = Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
         G_btmVolumes.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
         Dim G_VolumesVolumes = VolumesVolumesTradesPctBox.CreateGraphics
-        'Dim btmVolumesVolumes As New Bitmap(VolumesVolumesTradesPctBox.Width, VolumesVolumesTradesPctBox.Height)
         Dim G_btmVolumesVolumes = Graphics.FromImage(pt.btmVolumesVolumes)
         G_btmVolumesVolumes.TextRenderingHint = Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
         G_btmVolumesVolumes.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
@@ -740,8 +729,6 @@ Public Class ChartPainting
         Else
             typeOfGraphic = CType(Me.usedForm, Form1).TypeOfGraphic
         End If
-
-
 
         For index = Me.currentPointTradesNsec To Me.lastPointTradesNsec
             If (index = Me.currentPointTradesNsec) Then

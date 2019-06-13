@@ -63,7 +63,6 @@ Partial Class Form1
         Me.Average = New System.Windows.Forms.CheckBox()
         Me.WindowSizeTextBox = New System.Windows.Forms.TextBox()
         Me.WindowSizeBtn = New System.Windows.Forms.Button()
-        Me.ToEndButton = New System.Windows.Forms.Button()
         Me.WindowsSizeLabel = New System.Windows.Forms.Label()
         Me.SetSensitivityButton = New System.Windows.Forms.Button()
         Me.SetSensitivityTextBox = New System.Windows.Forms.TextBox()
@@ -73,6 +72,7 @@ Partial Class Form1
         Me.SellOrderButton = New System.Windows.Forms.Button()
         Me.ListViewOrders = New System.Windows.Forms.ListView()
         Me.RefreshButton = New System.Windows.Forms.Button()
+        Me.ToEndButton = New System.Windows.Forms.Button()
         Me.TabPage0.SuspendLayout()
         Me.Charts0.SuspendLayout()
         Me.QuotesTab0.SuspendLayout()
@@ -92,7 +92,7 @@ Partial Class Form1
         'ConnectButton
         '
         Me.ConnectButton.Location = New System.Drawing.Point(141, 9)
-        Me.ConnectButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ConnectButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ConnectButton.Name = "ConnectButton"
         Me.ConnectButton.Size = New System.Drawing.Size(115, 28)
         Me.ConnectButton.TabIndex = 0
@@ -122,7 +122,7 @@ Partial Class Form1
         'ExanteIDTextBox0
         '
         Me.ExanteIDTextBox0.Location = New System.Drawing.Point(264, 11)
-        Me.ExanteIDTextBox0.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ExanteIDTextBox0.Margin = New System.Windows.Forms.Padding(4)
         Me.ExanteIDTextBox0.Name = "ExanteIDTextBox0"
         Me.ExanteIDTextBox0.Size = New System.Drawing.Size(225, 22)
         Me.ExanteIDTextBox0.TabIndex = 2
@@ -131,7 +131,7 @@ Partial Class Form1
         'SubscribreButton0
         '
         Me.SubscribreButton0.Location = New System.Drawing.Point(503, 9)
-        Me.SubscribreButton0.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SubscribreButton0.Margin = New System.Windows.Forms.Padding(4)
         Me.SubscribreButton0.Name = "SubscribreButton0"
         Me.SubscribreButton0.Size = New System.Drawing.Size(147, 28)
         Me.SubscribreButton0.TabIndex = 11
@@ -445,7 +445,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(23, 78)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(233, 26)
         Me.Button3.TabIndex = 46
@@ -519,16 +519,6 @@ Partial Class Form1
         Me.WindowSizeBtn.Text = "Применить"
         Me.WindowSizeBtn.UseVisualStyleBackColor = True
         '
-        'ToEndButton
-        '
-        Me.ToEndButton.Location = New System.Drawing.Point(824, 103)
-        Me.ToEndButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ToEndButton.Name = "ToEndButton"
-        Me.ToEndButton.Size = New System.Drawing.Size(75, 28)
-        Me.ToEndButton.TabIndex = 54
-        Me.ToEndButton.Text = "->>"
-        Me.ToEndButton.UseVisualStyleBackColor = True
-        '
         'WindowsSizeLabel
         '
         Me.WindowsSizeLabel.AutoSize = True
@@ -571,7 +561,7 @@ Partial Class Form1
         'BuyOrderButton
         '
         Me.BuyOrderButton.Location = New System.Drawing.Point(905, 38)
-        Me.BuyOrderButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BuyOrderButton.Margin = New System.Windows.Forms.Padding(4)
         Me.BuyOrderButton.Name = "BuyOrderButton"
         Me.BuyOrderButton.Size = New System.Drawing.Size(133, 28)
         Me.BuyOrderButton.TabIndex = 59
@@ -581,7 +571,7 @@ Partial Class Form1
         'QuantityTextBox
         '
         Me.QuantityTextBox.Location = New System.Drawing.Point(768, 43)
-        Me.QuantityTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.QuantityTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.QuantityTextBox.Name = "QuantityTextBox"
         Me.QuantityTextBox.Size = New System.Drawing.Size(132, 22)
         Me.QuantityTextBox.TabIndex = 60
@@ -589,7 +579,7 @@ Partial Class Form1
         'SellOrderButton
         '
         Me.SellOrderButton.Location = New System.Drawing.Point(907, 70)
-        Me.SellOrderButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SellOrderButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SellOrderButton.Name = "SellOrderButton"
         Me.SellOrderButton.Size = New System.Drawing.Size(133, 28)
         Me.SellOrderButton.TabIndex = 61
@@ -599,7 +589,7 @@ Partial Class Form1
         'ListViewOrders
         '
         Me.ListViewOrders.Location = New System.Drawing.Point(1047, 43)
-        Me.ListViewOrders.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ListViewOrders.Margin = New System.Windows.Forms.Padding(4)
         Me.ListViewOrders.Name = "ListViewOrders"
         Me.ListViewOrders.Size = New System.Drawing.Size(687, 90)
         Me.ListViewOrders.Sorting = System.Windows.Forms.SortOrder.Descending
@@ -610,12 +600,22 @@ Partial Class Form1
         'RefreshButton
         '
         Me.RefreshButton.Location = New System.Drawing.Point(907, 102)
-        Me.RefreshButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RefreshButton.Margin = New System.Windows.Forms.Padding(4)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(133, 28)
         Me.RefreshButton.TabIndex = 63
         Me.RefreshButton.Text = "Обновить"
         Me.RefreshButton.UseVisualStyleBackColor = True
+        '
+        'ToEndButton
+        '
+        Me.ToEndButton.Location = New System.Drawing.Point(824, 103)
+        Me.ToEndButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ToEndButton.Name = "ToEndButton"
+        Me.ToEndButton.Size = New System.Drawing.Size(75, 28)
+        Me.ToEndButton.TabIndex = 54
+        Me.ToEndButton.Text = "->>"
+        Me.ToEndButton.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -652,7 +652,7 @@ Partial Class Form1
         Me.Controls.Add(Me.ConnectButton)
         Me.Controls.Add(Me.ExanteIDTextBox0)
         Me.Controls.Add(Me.SubscribreButton0)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "A&K Trader 1.0"
         Me.TabPage0.ResumeLayout(False)
@@ -714,7 +714,6 @@ Partial Class Form1
     Friend WithEvents WindowSizeTextBox As TextBox
     Friend WithEvents WindowSizeBtn As Button
     Friend WithEvents BorderPctBox As PictureBox
-    Friend WithEvents ToEndButton As Button
     Friend WithEvents WindowsSizeLabel As Label
     Friend WithEvents SetSensitivityButton As Button
     Friend WithEvents SetSensitivityTextBox As TextBox
@@ -724,4 +723,5 @@ Partial Class Form1
     Friend WithEvents SellOrderButton As System.Windows.Forms.Button
     Friend WithEvents ListViewOrders As System.Windows.Forms.ListView
     Friend WithEvents RefreshButton As System.Windows.Forms.Button
+    Friend WithEvents ToEndButton As Button
 End Class

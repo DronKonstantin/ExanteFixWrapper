@@ -134,9 +134,14 @@ Public Class OrderFixExecutor
             posInfo.Position = -posShort.getValue()
         End If
         Dim avgPrice = New DoubleField(6)
-        posInfo.AvgPrice = message.getField(avgPrice).getValue()
         Dim profitAndLoss = New DoubleField(20030)
-        posInfo.ProfitAndLoss = message.getField(profitAndLoss).getValue()
+        Try
+            posInfo.AvgPrice = message.getField(avgPrice).getValue()
+            posInfo.ProfitAndLoss = message.getField(profitAndLoss).getValue()
+        Catch ex As QuickFix.FieldNotFound
+            posInfo.AvgPrice = 0.0
+            posInfo.ProfitAndLoss = 0.0
+        End Try
         positionStateCallback.Invoke(posInfo)
     End Sub
 

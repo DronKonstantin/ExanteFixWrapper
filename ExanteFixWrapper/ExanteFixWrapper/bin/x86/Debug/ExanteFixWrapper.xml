@@ -6,18 +6,20 @@ ExanteFixWrapper
 </name>
 </assembly>
 <members>
+<member name="T:ExanteFixWrapper.My.Resources.Resources">
+<summary>
+  Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+</summary>
+</member>
 <member name="P:ExanteFixWrapper.My.Resources.Resources.ResourceManager">
-	<summary>
+<summary>
   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
 </summary>
-</member><member name="P:ExanteFixWrapper.My.Resources.Resources.Culture">
-	<summary>
+</member>
+<member name="P:ExanteFixWrapper.My.Resources.Resources.Culture">
+<summary>
   Перезаписывает свойство CurrentUICulture текущего потока для всех
   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-</summary>
-</member><member name="T:ExanteFixWrapper.My.Resources.Resources">
-	<summary>
-  Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
 </summary>
 </member>
 </members>
